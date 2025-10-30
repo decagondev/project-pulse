@@ -9,7 +9,7 @@ Assumptions:
 - Each PR targets a feature branch from `main` (e.g., `feature/data-import`).
 - Commits follow conventional commit messages (e.g., `feat: add CSV parser`).
 - Total timeline: ~1 week, as per the plan, with testing/debugging integrated.
-- Dependencies: Java 17+, H2 DB, JavaFX; use Maven/Gradle for build management (assume Maven for specificity).
+- Dependencies: Java 17+, H2 DB, JavaFX; use Gradle for build management (assume Gradle for specificity).
 - Testing: Include unit/integration tests in relevant commits using JUnit.
 - Code style: Follow Java conventions; use provided code snippets as starting points.
 
@@ -20,10 +20,10 @@ Assumptions:
 
 ### PR 1.1: Initialize Project Repository and Build System
 **Branch**: `feature/project-setup`
-**Description**: Set up the Maven project, add dependencies, and configure basic structure.
+**Description**: Set up the Gradle project, add dependencies, and configure basic structure.
 
-- **Commit 1**: `chore: initialize Maven project with Java 17 configuration`  
-  Create `pom.xml` with Java 17, add groupId/artifactId/version for ProjectPulse.
+- **Commit 1**: `chore: initialize Gradle project with Java 17 configuration`  
+  Create `build.gradle` with Java 17, add group/version for ProjectPulse.
 
 - **Commit 2**: `feat: add dependencies for H2 DB, JavaFX, and parsing libraries`  
   Add H2 (`com.h2database:h2`), JavaFX (`org.openjfx:javafx-controls`, etc.), Jackson for JSON (`com.fasterxml.jackson.core:jackson-databind`), OpenCSV for CSV (`com.opencsv:opencsv`).
@@ -32,7 +32,7 @@ Assumptions:
   Set up `src/main/java/com/projectpulse/` with packages for models, components, ui, etc.; add `src/test/java` for tests.
 
 - **Commit 4**: `test: add initial JUnit setup and smoke test`  
-  Add JUnit dependency; write a simple test to verify build.
+  Add JUnit dependency; write a simple test to verify build (use JUnit Platform).
 
 ### PR 1.2: Set Up H2 Database Integration
 **Branch**: `feature/database-setup`
@@ -289,6 +289,6 @@ Assumptions:
   Verify visualization accuracy, etc.
 
 - **Commit 3**: `chore: create executable JAR`  
-  Configure Maven shade plugin.
+  Configure Gradle Shadow plugin to produce a fat JAR in `build/libs/*-all.jar`.
 
 - **Commit 4**: `docs: add user guide in docs folder`

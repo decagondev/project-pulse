@@ -1,7 +1,7 @@
 # ProjectPulse
 
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
-[![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
+[![Gradle](https://img.shields.io/badge/Gradle-8%2B-blue.svg)](https://gradle.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## Introduction
@@ -41,20 +41,20 @@ For detailed product requirements, development tasks, and code examples, refer t
    ```
 
 2. **Build the Project**:
-   Use Maven to resolve dependencies and build the executable JAR.
+   Use Gradle to resolve dependencies and build the executable JAR.
    ```
-   mvn clean install
+   ./gradlew clean build
    ```
-   This will compile the code, run tests, and package the application into `target/projectpulse-1.0-SNAPSHOT.jar` using the Maven Shade plugin.
+   This will compile the code, run tests, and package the application. If using the Shadow plugin, the fat JAR will be available at `build/libs/projectpulse-1.0-SNAPSHOT-all.jar`.
 
 3. **Run the Application**:
-   Launch the app directly from the JAR:
+   Launch the app directly from the fat JAR (if using Shadow):
    ```
-   java -jar target/projectpulse-1.0-SNAPSHOT.jar
+   java -jar build/libs/projectpulse-1.0-SNAPSHOT-all.jar
    ```
    Alternatively, for development:
    ```
-   mvn exec:java -Dexec.mainClass="com.projectpulse.MainApp"
+   ./gradlew run
    ```
 
 4. **Database Initialization**:
@@ -63,7 +63,7 @@ For detailed product requirements, development tasks, and code examples, refer t
 5. **Verify Installation**:
    Upon launch, the main window should appear with options to import data and visualize timelines. If issues arise, check the console for logs (SLF4J is used for debugging).
 
-For advanced configuration, refer to the `pom.xml` in the root directory, which includes dependencies for H2, JavaFX, Jackson (JSON), OpenCSV (CSV), and JUnit (testing).
+For advanced configuration, refer to `build.gradle`, which includes dependencies for H2, JavaFX, Jackson (JSON), OpenCSV (CSV), and JUnit (testing).
 
 ## Usage
 
@@ -77,7 +77,7 @@ For code examples and implementation details, see [docs/CODE-SNIPPETS.md](./docs
 
 ## Contributing
 
-Contributions are welcome! Please fork the repo, create a feature branch, and submit a pull request following the structure in [docs/TASKS.md](./docs/TASKS.md) (e.g., conventional commits). Run `mvn test` before submitting.
+Contributions are welcome! Please fork the repo, create a feature branch, and submit a pull request following the structure in [docs/TASKS.md](./docs/TASKS.md) (e.g., conventional commits). Run `./gradlew test` before submitting.
 
 ## License
 

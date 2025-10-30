@@ -8,9 +8,9 @@ By contributing, you agree to abide by the project's [Code of Conduct](#code-of-
 
 ### Prerequisites
 - Java 17 or higher (JDK for development)
-- Maven 3.6 or higher
+- Gradle 8 or higher (or use the included Gradle wrapper)
 - Git for version control
-- Familiarity with Java, JavaFX, H2 Database, and related libraries (see `pom.xml` for dependencies)
+- Familiarity with Java, JavaFX, H2 Database, and related libraries (see `build.gradle` for dependencies)
 
 ### Installation
 1. Fork the repository on GitHub.
@@ -21,17 +21,17 @@ By contributing, you agree to abide by the project's [Code of Conduct](#code-of-
    ```
 3. Build the project:
    ```
-   mvn clean install
+   ./gradlew clean build
    ```
-   This compiles the code, runs tests, and generates the executable JAR in `target/`.
+   This compiles the code, runs tests, and generates artifacts in `build/libs/` (if using the Shadow plugin, a fat JAR will be `*-all.jar`).
 
 4. Run the application:
    ```
-   java -jar target/projectpulse-1.0-SNAPSHOT.jar
+   java -jar build/libs/projectpulse-1.0-SNAPSHOT-all.jar
    ```
    Or for development:
    ```
-   mvn exec:java -Dexec.mainClass="com.projectpulse.MainApp"
+   ./gradlew run
    ```
 
 For more details, refer to the [README.md](./README.md#setup-instructions).
@@ -65,7 +65,7 @@ For more details, refer to the [README.md](./README.md#setup-instructions).
 - Aim for high coverage (target: 80%+).
 - Run tests before committing:
   ```
-  mvn test
+  ./gradlew test
   ```
 - Include tests for edge cases, such as empty data, invalid imports, or cyclic dependencies.
 - Integration tests should cover flows like import-to-visualization.
